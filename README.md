@@ -17,11 +17,11 @@ For this project, I wrote code in Python to access the GovTrack API to download 
 All data was obtained through the GovTrack API, documentation for which can be found here: https://www.govtrack.us/developers/api 
 
 The data was downloaded in batches, identical in format, each of which contains raw data about bills from a number of Congresses. These were merged and cleaned in R. 
-1. *bills9394_API*: bills from the 93rd and 94th Congress
-2. *bills9599_API*: bills from the 95th through 99th Congress
-3. *bills0004_API*: bills from the 100th through 104th Congress
-4. *bills0509_API*: bills from the 105th through 109th Congress
-5. *bills1014_API*: bills from the 110th through 114th Congress
+1. bills9394_API: bills from the 93rd and 94th Congress
+2. bills9599_API: bills from the 95th through 99th Congress
+3. bills0004_API: bills from the 100th through 104th Congress
+4. bills0509_API: bills from the 105th through 109th Congress
+5. bills1014_API: bills from the 110th through 114th Congress
 
 ### Code
 
