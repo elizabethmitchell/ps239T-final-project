@@ -1,0 +1,161 @@
+\documentclass[12pt]{beamer}
+\usetheme{Berkeley}
+%\mode<presentation>{\usetheme{Berkeley}}
+%\usepackage{setspace, graphicx, fullpage, amssymb, amsmath, epsfig, natbib, array, multirow, hyperref, framed, tabularx, graphicx, booktabs}
+\usepackage{graphicx}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[english]{babel}
+%\usepackage{caption}
+%\captionsetup[table]{skip=0pt}
+%Those are packages that I use to compile this document - if MikTeX asks you to install them, just agree.
+%\bibpunct{(}{)}{;}{a}{}{,}
+%\def\citeapos#1{\citeauthor{#1}'s (\citeyear{#1})}
+%\parindent .35 in %\raggedright
+\hypersetup{
+    bookmarks=false,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobats bookmarks
+    pdftoolbar=true,        % show Acrobats toolbar?
+    pdfmenubar=true,        % show Acrobats menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={},    % title
+    pdfauthor={},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keywords}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    linkbordercolor={0 0 0},  %border color
+    citebordercolor={0 0 0},
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue,         % color of external links
+}
+
+
+%That line gives you 1" margins all around.
+\title{Final Presentation}
+\subtitle{What Congress Does}
+\author{Elizabeth Mitchell}
+\date{ \today\ }
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+	\tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Source of Interest}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{figure}[ht]
+				\begin{center}
+					\begin{textblock*}{5cm}(2cm,2cm)
+					\includegraphics[scale=.6]{houseactivity.png}
+					\end{textblock*}
+				\end{center}
+			\end{figure}
+		\column{0.5\textwidth}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Tools}
+	\begin{itemize}
+		\item Python
+			\begin{itemize}
+			\item access API to download bill data
+			\end{itemize}
+		\item R
+			\begin{itemize}
+			\item basic data cleaning 
+			\item tm package for text processing
+			\item stm package (structural topic modeling) for 								sorting, analysis, and plotting
+			\end{itemize}
+	\item \LaTeX
+			\begin{itemize}
+			\item Beamer document class for this presentation
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Getting Data}
+\begin{frame}{Source of Data}
+	\begin{itemize}
+		\item GovTrack API
+		\begin{itemize}
+			\item basic legislator and legislation data back to 1973
+			\item downloaded enacted bill titles and dates passed
+		\end{itemize}
+		\item Processing for text analysis
+		\begin{itemize}
+			\item lowercase, stemming, remove numbers and punctuation
+			\item limit to words that appear twice
+			\item remove stop words 
+			\includegraphics[scale=.4]{stopwords.png}
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Analysis}
+\begin{frame}{Analysis}
+	\begin{itemize}
+		\item Unsupervised algorithm to sort titles into topics
+		\begin{itemize}
+			\item STM package in R
+			\item 21 topics, 21 standing committees in House and 						Senate
+		\end{itemize}
+		\item Explore topics for common themes
+		\item \includegraphics[scale=.4]{wordcloud.png}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+	\includegraphics[scale=.45]{frequency.pdf}
+\end{frame}
+
+\section{Results}
+\begin{frame}{Results}
+	\begin{itemize}
+	\item Compare topic frequency over time 
+	\item \includegraphics[scale=.4]{effect3.pdf}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{itemize}
+	\item Compare topic frequency over time 
+	\item \includegraphics[scale=.4]{effect1.pdf}
+	\end{itemize}
+\end{frame}
+	
+\begin{frame}{Results}
+	\begin{itemize}
+	\item Compare topic frequency over time 
+	\item \includegraphics[scale=.4]{effect2.pdf}
+	\end{itemize}
+\end{frame}
+
+\section{Conclusions}
+\begin{frame}{Challenges and Next Steps}
+	\begin{itemize}
+		\item stm package
+			\begin{itemize}
+				\item great documentation, small community
+			\end{itemize}
+		\item arbitrary decisions
+			\begin{itemize}
+			\item stop words, type of processing (proper nouns? sparsity?), number 				of categories
+			\end{itemize}
+		\item Substituting bill text for bill title
+			\begin{itemize}
+				\item source, data size, computing power (topic modeling took ~1.5 						hours for titles alone)
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+\end{document}
